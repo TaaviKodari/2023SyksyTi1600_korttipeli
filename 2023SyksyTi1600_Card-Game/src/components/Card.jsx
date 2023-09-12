@@ -1,12 +1,12 @@
-
-export default function Card(){
+import '../App.css'
+export default function Card({card}){
     return(
-        <div>
-            <img src = "http://placekitten.com/120/100"/>
+        <div className="card">
+            <img src = {card.image}/>
             <ul>
                 <li>
-                    <span>Cuteness</span>
-                    <span> 10 </span>
+                    <span>{card.stats[0].name}</span>
+                    <span> {card.stats[0].value} </span>
                 </li>
             </ul>
         </div>
