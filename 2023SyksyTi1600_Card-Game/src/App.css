@@ -6,3 +6,14 @@
   border-radius: 8px;
   box-shadow: 1px 1px 4px 1px gray;
 }
+
+.stat-list{
+  margin: 0;
+  padding: 0 8px;
+}
+
+.stat-list-item{
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}

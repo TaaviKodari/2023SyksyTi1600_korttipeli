@@ -3,11 +3,13 @@ export default function Card({card}){
     return(
         <div className="card">
             <img src = {card.image}/>
-            <ul>
-                <li>
-                    <span>{card.stats[0].name}</span>
-                    <span> {card.stats[0].value} </span>
-                </li>
+            <ul className='stat-list'>
+                {card.stats.map((stat, index) =>(
+                    <li className='stat-list-item' key={index}>
+                        <span>{stat.name}</span>
+                        <span> {stat.value} </span>
+                    </li>
+                ))}
             </ul>
         </div>
     );
