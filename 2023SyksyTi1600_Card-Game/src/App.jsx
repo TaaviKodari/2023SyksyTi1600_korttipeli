@@ -44,8 +44,8 @@ export default function App(){
 
   function compareCards(){
     
-    const playerStat = playerCard.stats[0];
-    const opponentStat = opponentCard.stats[0];
+    const playerStat = cards.player[0].stats[0];
+    const opponentStat = cards.opponent[0].stats[0];
     
 
     if(playerStat.value === opponentStat.value){
@@ -64,12 +64,29 @@ export default function App(){
     <>
       <h1>Hello World!</h1>
       <div className = 'game'>
-        <Card card={cards.player[0]} />
+        <div className="hand player">
+          <ul className='card-list'>
+              {cards.player.map(pCard =>(
+                <li className='card-list-item player' key={pCard.id}>
+                  <Card card={pCard} />
+                </li>
+              ))}
+          </ul>
+        </div>
+
         <div className='center-area'>
           <p>{result || 'Press the button'}</p>
-          <button onClick={compareCards} type="button">Play</button>
+          <button onClick={compareCards} type="button" className='play-button' >Play</button>
         </div>
-        <Card card={cards.opponent[0]} />
+        <div className='hand opponent'>
+            <ul className='card-list'>
+              {cards.opponent.map(oCard =>(
+                <li className='card-list-item opponent' key={oCard.id}>
+                  <Card card={oCard} />
+                </li>
+              ))}
+            </ul>
+        </div>
         
       </div>
     </>

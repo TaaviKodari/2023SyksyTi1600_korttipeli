@@ -29,3 +29,22 @@
   align-self: center;
   min-width: 20vw;
 }
+
+.card-list{
+  display:flex;
+}
+
+.card-list-item.player{
+  margin-left: calc(6vw - 150px);
+}
+
+.card-list-item.opponent{
+  margin-right: calc(6vw - 150px);
+}
+.play-button{
+  width: 80px;
+  height: 40px;
+  align-self: center;
+  font-size: larger;
+  font-weight: bold;
+}
