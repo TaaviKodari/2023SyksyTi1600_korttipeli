@@ -40,11 +40,17 @@
 
 .card-list-item.opponent{
   margin-right: calc(6vw - 150px);
+  direction: ltr;
 }
+
 .play-button{
   width: 80px;
   height: 40px;
   align-self: center;
   font-size: larger;
   font-weight: bold;
+}
+
+.card-list.opponent{
+  direction: rtl;
 }
