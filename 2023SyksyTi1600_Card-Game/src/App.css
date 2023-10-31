@@ -7,6 +7,10 @@
   box-shadow: 1px 1px 4px 1px gray;
 }
 
+.card.back{
+  background-color: rgb(118, 109, 109);
+}
+
 .stat-list{
   margin: 0;
   padding: 0 8px;
@@ -32,6 +36,7 @@
 
 .card-list{
   display:flex;
+  flex-direction: row-reverse;
 }
 
 .card-list-item.player{

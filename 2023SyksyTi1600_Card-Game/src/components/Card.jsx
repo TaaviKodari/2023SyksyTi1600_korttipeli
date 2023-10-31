@@ -1,6 +1,6 @@
 import '../App.css'
 export default function Card({card}){
-   if(!card) return <div className='card'/>;
+   if(!card) return <div className='card back'/>;
     
     return(
         <div className="card">
