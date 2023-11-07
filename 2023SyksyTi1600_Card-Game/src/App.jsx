@@ -56,8 +56,8 @@ export default function App(){
   
   function compareCards(){
     
-    const playerStat = cards.player[0].stats[0];
-    const opponentStat = cards.opponent[0].stats[0];
+    const playerStat = cards.player[0].stats[selectedStat];
+    const opponentStat = cards.opponent[0].stats[selectedStat];
     
 
     if(playerStat.value === opponentStat.value){
@@ -104,6 +104,12 @@ export default function App(){
     setResult('');
   }
 
+  function restartGame(){
+    setCards(dealCards);
+    setResult('');
+    setGameState('Play');
+  }
+
   return(
     <>
       <h1>Hello World!</h1>
@@ -112,7 +118,10 @@ export default function App(){
           <ul className='card-list'>
               {cards.player.map((pCard, index) =>(
                 <li className='card-list-item player' key={pCard.id}>
-                  <Card card={ index === 0 ? pCard : null} />
+                  <Card card={ index === 0 ? pCard : null}
+                  handleSelect={statIndex => gameState === 'Play' && setSelectedStat(statIndex)}
+                  selectedStat={selectedStat}
+                  />
                 </li>
               ))}
           </ul>
@@ -131,9 +140,9 @@ export default function App(){
         </div>
         <div className='hand opponent'>
             <ul className='card-list opponent'>
-              {cards.opponent.map(oCard =>(
+              {cards.opponent.map((oCard,index)=>(
                 <li className='card-list-item opponent' key={oCard.id}>
-                  <Card card={oCard} />
+                  <Card card={result && index === 0 ? oCard : null} />
                 </li>
               ))}
             </ul>

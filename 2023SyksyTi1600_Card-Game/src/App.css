@@ -22,6 +22,16 @@
   justify-content: space-between;
 }
 
+.stat-list-item.selected{
+  outline: 1px solid black;
+  background-color: #f1efe2;
+}
+
+.card-list-item.player .stat-list-item:hover{
+  outline: 1px dashed black;
+  background-color: #fafafa;
+}
+
 .game{
   display: flex;
   justify-content: center;
