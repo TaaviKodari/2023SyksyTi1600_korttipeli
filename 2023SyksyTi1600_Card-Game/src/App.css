@@ -69,3 +69,19 @@
 .card-list.opponent{
   direction: rtl;
 }
+
+.hand{
+  display: flex;
+  flex-direction: column;
+  min-width: 40vw;
+}
+
+.hand.player > h2{
+  align-self: end;
+}
+
+.card-name{
+  display: flex;
+  justify-content: center;
+  border: 1px solid rgb(72, 72, 72);
+}

@@ -5,6 +5,7 @@ export default function Card({card,selectedStat,handleSelect}){
     return(
         <div className="card">
             <img src = {card.image}/>
+            <span className='card-name'>{card.name}</span>
             <ul className='stat-list'>
                 {card.stats.map((stat, index) =>(
                     <li className={`stat-list-item${selectedStat === index ? ' selected' :''}`} 

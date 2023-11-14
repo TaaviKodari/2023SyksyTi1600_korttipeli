@@ -2,6 +2,7 @@ import './App.css'
 import Card from './components/Card'
 import PlayButton from './components/PlayButton';
 import { useState } from 'react';
+import {cardsData} from './components/CardDatabase';
 
 const getRandomInt = (min,max)=> Math.floor(Math.random() * (max - min + 1) + min);
 
@@ -20,14 +21,16 @@ const opponentCard = {
 };
 
 const createCard = index =>({
-  image: 'http://placekitten.com/120/100?image=' + index,
-  stats: [{name:'Cuteness', value: getRandomInt(1, 999)},
-          {name:'Speed', value: getRandomInt(1, 999)},
-          {name:'Weight', value: getRandomInt(1, 999)}],
+  name: cardsData[index].name,
+  image: cardsData[index].image,
+  stats: [{name:cardsData[index].stats[0].name, value:cardsData[index].stats[0].value},
+          {name:cardsData[index].stats[1].name, value:cardsData[index].stats[1].value},
+          {name:cardsData[index].stats[2].name, value:cardsData[index].stats[2].value},
+        ],
   id: crypto.randomUUID(),
 })
 
-const deck = Array(16).fill(null).map((_,index) => createCard(index))
+const deck = Array(6).fill(null).map((_,index) => createCard(index))
 
 const half = Math.ceil(deck.length /2);
 
@@ -54,6 +57,16 @@ export default function App(){
   const [gameState, setGameState] = useState('Play');
   const [selectedStat, setSelectedStat] = useState(0);
   
+  if(gameState !== 'Game_over' && (!cards.opponent.length || !cards.player.length))
+  {
+    setResult(()=>{
+      if(!cards.opponent.length) return 'Player win!';
+      else if(!cards.player.length) return 'Player loss!';
+      return 'Draw';
+    });
+    setGameState('Game_over');
+  }
+
   function compareCards(){
     
     const playerStat = cards.player[0].stats[selectedStat];
@@ -132,6 +145,9 @@ export default function App(){
           {
             gameState === 'Play' ? (
               <PlayButton text={'Play'} handleClick={compareCards} />
+            ) :
+            gameState === 'Game_over' ? (
+              <PlayButton text={'Restart'} handleClick={restartGame}/>
             ) :
             (
               <PlayButton text={'Next'} handleClick={nextRound} />
