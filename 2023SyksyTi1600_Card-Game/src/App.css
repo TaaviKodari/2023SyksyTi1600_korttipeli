@@ -85,3 +85,10 @@
   justify-content: center;
   border: 1px solid rgb(72, 72, 72);
 }
+
+.home-text{
+  text-align: center;
+  font-size: 5vw;
+  font-family:'Courier New', Courier, monospace;
+  color: #725569;
+}
