@@ -1,4 +1,4 @@
-import '../App.css'
+import '../../App.css'
 import Card from './Card'
 import PlayButton from './PlayButton';
 import { useState } from 'react';

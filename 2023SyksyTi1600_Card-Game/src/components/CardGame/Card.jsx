@@ -1,4 +1,4 @@
-import '../App.css'
+import '../../App.css'
 export default function Card({card,selectedStat,handleSelect}){
    if(!card) return <div className='card back'/>;
     
