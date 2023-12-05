@@ -1,4 +1,10 @@
 import React, { useEffect, useRef } from "react";
+import { BallMovement } from "./BallMovement";
+import Data from "./Data";
+import WallCollision from "./WallCollision";
+
+let {ballObj} = Data;
+
 export default function Breakout(){
     const canvasRef = useRef(null);
 
@@ -6,12 +12,14 @@ export default function Breakout(){
         const render = ()=>{
             const canvas = canvasRef.current;
             const ctx = canvas.getContext('2d');
+            ctx.clearRect(0,0,canvas.width, canvas.height);
             // ctx.fillStyle = "green";
             // ctx.fillRect(10,10,150,100);
-            ctx.beginPath();
-            ctx.arc(100,75,50,0,2 * Math.PI)
-            ctx.stroke();
-            console.log("Draw circle");
+            
+            BallMovement(ctx,ballObj);
+           
+            WallCollision(ballObj, canvas);
+
             requestAnimationFrame(render);
         };
         render();
